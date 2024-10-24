@@ -1,0 +1,21 @@
+name: Run Script
+
+on:
+  schedule:
+    - cron: '0 * * * *' # هذا يعني أنه سيعمل كل ساعة
+  workflow_dispatch: # يمكنك تشغيله يدويًا من واجهة GitHub
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14' # اختر النسخة المناسبة
+
+      - name: Run script
+        run: node script.js
